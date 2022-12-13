@@ -22,7 +22,7 @@ function NewsCard(props) {
   src = src.substring(0, Math.min(20, src.length));
 
   const img =
-    props.urlToImage ||
+    props.image ||
     "https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg?auto=compress&cs=tinysrgb&w=600";
   return (
     <Card>

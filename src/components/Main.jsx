@@ -9,20 +9,20 @@ const Main = () => {
   const loc = params.location.toLowerCase();
   const cat = params.category.toLowerCase();
   const keyw = params.keyword.toLowerCase();
-  var url = "https://newsapi.org/v2/top-headlines?";
+  var url = "https://gnews.io/api/v4/top-headlines?";
   const [load, setLoad] = useState(true);
 
   if (keyw) {
-    url = `https://newsapi.org/v2/everything?apiKey=${key}&q=${keyw}`;
+    url = `https://gnews.io/api/v4/search?token=${key}&q=${keyw}`;
   } else if (loc === "in") {
     if (cat)
-      url = `https://newsapi.org/v2/top-headlines?apiKey=${key}&language=en&category=${cat}&country=${loc}`;
+      url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=en&topic=${cat}&country=${loc}`;
     else
-      url = `https://newsapi.org/v2/top-headlines?apiKey=${key}&language=en&country=${loc}`;
+      url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=en&country=${loc}`;
   } else {
     if (cat)
-      url = `https://newsapi.org/v2/top-headlines?apiKey=${key}&language=en&category=${cat}`;
-    else url = `https://newsapi.org/v2/top-headlines?apiKey=${key}&language=en`;
+      url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=en&topic=${cat}`;
+    else url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=en`;
   }
   useEffect(() => {
     setLoad(true);

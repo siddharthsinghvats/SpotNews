@@ -18,7 +18,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const solutions = [
   {
-    name: "General",
+    name: "Breaking-News",
     href: "#",
     icon: ChartBarIcon,
   },
@@ -73,7 +73,7 @@ export default function Example() {
   };
   return (
     <>
-      <Popover className="sticky top-0 bg-white z-10 border-b-8 border-purple-300">
+      <Popover className="relative sm:sticky sm:top-0 bg-white z-10 border-b-8 border-purple-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
