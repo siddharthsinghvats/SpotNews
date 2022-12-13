@@ -73,13 +73,13 @@ export default function Example() {
   };
   return (
     <>
-      <Popover className="relative sm:sticky sm:top-0 bg-white z-10 border-b-8 border-purple-300">
+      <Popover className="relative md:sticky md:top-0 bg-white z-10 border-b-8 border-purple-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <span className=" flex justify-center items-center h-12 text-lg text-purple-700 font-bold w-auto sm:h-12 cursor-pointer">
-                <img src={logo} alt="logo" className="w-10 mx-2" />
-                SpotNews
+                <img src={logo} alt="logo" className="w-12 mx-2" />
+                <span className="hidden lg:flex"> SpotNews</span>
               </span>
             </div>
             <div className="hidden sm:flex ">
@@ -223,7 +223,7 @@ export default function Example() {
                         "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       )}
                     >
-                      <span>Longuage</span>
+                      <span>Language</span>
                       <ChevronDownIcon
                         className={classNames(
                           open ? "text-gray-600" : "text-gray-400",
