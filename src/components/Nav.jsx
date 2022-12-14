@@ -15,7 +15,6 @@ import {
   ArrowTrendingUpIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
 const solutions = [
   {
     name: "Breaking-News",
@@ -70,15 +69,17 @@ export default function Example() {
     const newParam = { ...param, ...reqParam };
     setParam(newParam);
     setSearch("");
+    if(document.getElementById('mobile-close'))
+      document.getElementById('mobile-close').click();
   };
   return (
     <>
-      <Popover className="relative md:sticky md:top-0 bg-white z-10 border-b-8 border-purple-300">
+      <Popover className="relative md:top-0 bg-white z-10 border-b-8 border-purple-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <span className=" flex justify-center items-center h-12 text-lg text-purple-700 font-bold w-auto sm:h-12 cursor-pointer">
-                <img src={logo} alt="logo" className="w-12 mx-2" />
+                <img src={logo} alt="logo"  className="w-12 mx-2" />
                 <span className="hidden lg:flex"> SpotNews</span>
               </span>
             </div>
@@ -93,12 +94,13 @@ export default function Example() {
               />
               <button
                 onClick={() => handleClick({ keyword: searchVal })}
-                className="text-base font-medium text-gray-900 rounded-md hover:text-white hover:bg-purple-600 mx-2 py-2 px-2 border-2"
+                className="active:bg-purple-800 text-base font-medium text-gray-900 rounded-md hover:text-white hover:bg-purple-600 mx-2 py-2 px-2 border-2"
               >
                 Search
               </button>
+             
             </div>
-
+           
             <div className="-my-2 -mr-2 md:hidden">
               <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="sr-only">Open menu</span>
@@ -128,25 +130,26 @@ export default function Example() {
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-200"
-                      enterFrom="opacity-0 translate-y-1"
+                      enterFrom="opacity-0 translate-y-100"
                       enterTo="opacity-100 translate-y-0"
                       leave="transition ease-in duration-150"
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                      <Popover.Panel className="absolute z-10  -ml-4 mt-3 w-max max-w-md transform px-4 sm:px-4 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                             {solutions.map((item) => (
                               <span
+                              
                                 key={item.name}
                                 onClick={() =>
                                   handleClick({ category: item.name })
                                 }
-                                className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50 cursor-pointer"
+                                className="active:bg-purple-100 -m-3 flex items-start rounded-lg p-4 hover:bg-gray-50 cursor-pointer"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 text-indigo-600"
+                                  className="h-6 w-6 flex-shrink-0 hover:text-purple-600 text-indigo-600"
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
@@ -191,18 +194,18 @@ export default function Example() {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                      <Popover.Panel className="absolute z-10 -ml-2 mt-3  max-w-xs transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-6">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                             <span
                               onClick={() => handleClick({ location: "in" })}
-                              className="cursor-pointer hover:text-purple-600"
+                              className="cursor-pointer p-3 rounded-md w-fit hover:text-purple-600 active:bg-purple-100"
                             >
                               India
                             </span>
                             <span
                               onClick={() => handleClick({ location: "oth" })}
-                              className="cursor-pointer  hover:text-purple-600"
+                              className="cursor-pointer  hover:text-purple-600 p-3 rounded-md w-fit active:bg-purple-100"
                             >
                               World
                             </span>
@@ -242,18 +245,18 @@ export default function Example() {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                      <Popover.Panel className="absolute z-10 -ml-2 mt-3 p-2 max-w-xs transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
                         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                          <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                          <div className="relative grid gap-6 bg-white px-2 py-6 sm:gap-4 sm:p-4">
                             <span
                               onClick={() => handleClick({ lang: "hi" })}
-                              className="cursor-pointer hover:text-purple-600"
+                              className="cursor-pointer hover:text-purple-600 p-3 rounded-md w-fit active:bg-purple-100"
                             >
                               Hindi
                             </span>
                             <span
                               onClick={() => handleClick({ lang:"en" })}
-                              className="cursor-pointer  hover:text-purple-600"
+                              className="cursor-pointer  hover:text-purple-600 p-3 rounded-md w-fit active:bg-purple-100"
                             >
                               English
                             </span>
@@ -285,8 +288,8 @@ export default function Example() {
               <div className="px-5 pt-5 pb-6">
                 <div className="flex items-center justify-between">
                   <div className="font-bold text-purple-700">SpotNews</div>
-                  <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <div className="-mr-2" >
+                    <Popover.Button id="mobile-close" className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -361,6 +364,7 @@ export default function Example() {
       >
         ^
       </div>
+     
     </>
   );
 }

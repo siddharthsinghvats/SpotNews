@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { ParamContext } from "../context/context";
 import NewsCard from "./NewsCard";
 import Loading from "./Loading";
+import Error from "./Error";
 const key = `${process.env.REACT_APP_NEWS_API_KEY}`;
 const Main = () => {
   const params = useContext(ParamContext);
   const [result, setResult] = useState([]);
+  const [err, setErr] = useState(false);
   const loc = params.location.toLowerCase();
   const cat = params.category.toLowerCase();
   const keyw = params.keyword.toLowerCase();
-  const lang = params.lang||"en";
+  const lang = params.lang || "en";
   var url = "https://gnews.io/api/v4/top-headlines?";
   const [load, setLoad] = useState(true);
 
@@ -23,21 +25,29 @@ const Main = () => {
   } else {
     if (cat)
       url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=${lang}&topic=${cat}`;
-    else url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=${lang}`;
+    else
+      url = `https://gnews.io/api/v4/top-headlines?token=${key}&lang=${lang}`;
   }
   useEffect(() => {
     setLoad(true);
     fetch(url)
-      .then((res) => res.json())
-      .then(
-        (results) => {
-          setResult(results.articles);
-          setLoad(false);
-        },
-        (error) => console.log(error)
-      );
+      .then((res) => {
+        if(!res.ok){
+          throw Error();
+        }
+        res.json();
+      })
+      .then((results) => {
+        
+        setResult(results.articles);
+        setLoad(false);
+      })
+      .catch((error) => {
+        setErr(true);
+      });
   }, [url]);
 
+  if (err) return (<><Error /> </>);
   return (
     <>
       {load && <Loading />}
@@ -53,6 +63,7 @@ const Main = () => {
           );
         })}
       </div>
+   
     </>
   );
 };

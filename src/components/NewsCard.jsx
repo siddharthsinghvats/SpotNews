@@ -10,7 +10,6 @@ function reverseString(str) {
 }
 
 function NewsCard(props) {
-  console.log(props.props);
   props = props.props;
   var desc = props.description;
   var pub_at = props.publishedAt.substring(0, 10);
