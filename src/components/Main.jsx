@@ -32,21 +32,23 @@ const Main = () => {
     setLoad(true);
     fetch(url)
       .then((res) => {
-        if(!res.ok){
-          throw Error();
+        if(!res||!res.ok){
+          setErr(true);
+        }else{
+        setErr(false);
+        return  res.json();
         }
-        res.json();
       })
       .then((results) => {
-        
+        console.log(results);
         setResult(results.articles);
         setLoad(false);
-      })
-      .catch((error) => {
+      }).catch(error=>{
         setErr(true);
-      });
+      })
+      
   }, [url]);
-
+  console.log(err);
   if (err) return (<><Error /> </>);
   return (
     <>
